@@ -1,5 +1,5 @@
 {
-  "name": "react-material-functional-forms",
+  "name": "@cordelta/react-forms-material",
   "version": "0.0.1",
   "description": "Beautiful, ultra simple, stateless, validated forms for use in React function components",
   "main": "dist.js",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.3.2",
-    "react-functional-forms": "^0.0.1"
+    "@cordelta/react-forms": "^0.0.1"
   },
   "peerDependencies": {
     "react": "^16.9.0"
