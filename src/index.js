@@ -1,5 +1,5 @@
 import { createElement } from 'react'
-import { wrapInput, wrapSubmit } from 'react-functional-forms'
+import { wrapInput, wrapSubmit } from '@cordelta/react-forms'
 import * as core from '@material-ui/core'
 
 export const TextField = wrapInput(core.TextField, { passErrorProp: true })
