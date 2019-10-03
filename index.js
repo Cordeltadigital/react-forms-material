@@ -44,10 +44,10 @@ export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShr
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
 
 export const Radio = base(
-  ({ name, values, labels, ...props }) => (
+  ({ name, values, labels, numeric, ...props }) => (
     createElement(core.RadioGroup, { ...props, children: [
       values.map((value, index) =>
-        createElement(RadioButton, { name, value, key: value, label: (labels && labels[index]) || value })
+        createElement(RadioButton, { name, value, numeric, key: value, label: (labels && labels[index]) || value })
       )
     ] })
   ),
