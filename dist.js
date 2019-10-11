@@ -17,13 +17,9 @@ var _reactForms = require("@cordelta/react-forms");
 
 var core = _interopRequireWildcard(require("@material-ui/core"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -37,8 +33,20 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Submit = (0, _reactForms.wrapSubmit)(core.Button);
 exports.Submit = Submit;
+
+var wrapped = function wrapped(component, options, baseOptions) {
+  return (0, _reactForms.wrapInput)(base(component, options, baseOptions), _objectSpread({
+    passErrorProp: true
+  }, options));
+};
 
 var base = function base(component) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -48,7 +56,7 @@ var base = function base(component) {
       _ref$shrinkLabel = _ref.shrinkLabel,
       shrinkLabel = _ref$shrinkLabel === void 0 ? true : _ref$shrinkLabel;
 
-  return (0, _reactForms.wrapInput)(function (_ref2) {
+  return function (_ref2) {
     var className = _ref2.className,
         error = _ref2.error,
         hiddenLabel = _ref2.hiddenLabel,
@@ -79,18 +87,18 @@ var base = function base(component) {
         children: helperText
       })] : []))
     });
-  }, _objectSpread({
-    passErrorProp: true
-  }, options));
+  };
 };
 
-var Text = base(core.Input);
+var Text = wrapped(core.Input);
 exports.Text = Text;
-var Checkbox = base(core.Checkbox, {
+var Checkbox = wrapped(core.Checkbox, {
   type: 'checkbox'
+}, {
+  alwaysShrinkLabel: true
 });
 exports.Checkbox = Checkbox;
-var RadioButton = base(core.Radio, {
+var RadioButton = wrapped(core.Radio, {
   type: 'radio'
 }, {
   shrinkLabel: false
@@ -100,13 +108,15 @@ var Radio = base(function (_ref3) {
   var name = _ref3.name,
       values = _ref3.values,
       labels = _ref3.labels,
-      props = _objectWithoutProperties(_ref3, ["name", "values", "labels"]);
+      numeric = _ref3.numeric,
+      props = _objectWithoutProperties(_ref3, ["name", "values", "labels", "numeric"]);
 
   return (0, _react.createElement)(core.RadioGroup, _objectSpread({}, props, {
     children: [values.map(function (value, index) {
       return (0, _react.createElement)(RadioButton, {
         name: name,
         value: value,
+        numeric: numeric,
         key: value,
         label: labels && labels[index] || value
       });
@@ -116,7 +126,7 @@ var Radio = base(function (_ref3) {
   alwaysShrinkLabel: true
 });
 exports.Radio = Radio;
-var Select = base(function (_ref4) {
+var Select = wrapped(function (_ref4) {
   var values = _ref4.values,
       labels = _ref4.labels,
       props = _objectWithoutProperties(_ref4, ["values", "labels"]);
@@ -132,5 +142,7 @@ var Select = base(function (_ref4) {
   }));
 }, {
   type: 'select'
+}, {
+  alwaysShrinkLabel: true
 });
 exports.Select = Select;
