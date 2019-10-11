@@ -1,11 +1,11 @@
-# react-material-functional-forms
+# @cordelta/react-forms-material
 
 Beautiful, ultra simple, stateless, validated forms for use in React function components
 
 ## Installation
 
 ```shell script
-yarn add react-material-functional-forms
+yarn add @cordelta/react-forms-material
 ```
 
 ## Usage

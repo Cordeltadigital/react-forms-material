@@ -50,5 +50,12 @@
     "ui"
   ],
   "author": "danderson00",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cordeltadigital/react-forms-material.git"
+  }
 }
