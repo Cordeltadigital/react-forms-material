@@ -10,6 +10,6 @@ yarn add @cordelta/react-forms-material
 
 ## Usage
 
-```jsx harmony
+```jsx
 
 ```
