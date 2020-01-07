@@ -1,8 +1,9 @@
 import { createElement } from 'react'
-import { wrapInput, wrapSubmit } from '@cordelta/react-forms'
+import { FormProvider, context, wrapInput, wrapSubmit } from '@cordelta/react-forms'
 import * as core from '@material-ui/core'
+import './styles'
 
-export { Form } from '@cordelta/react-forms'
+export const Form = FormProvider(context.Provider)
 export const Submit = wrapSubmit(core.Button)
 
 const wrapped = (component, options, baseOptions) => wrapInput(
@@ -10,8 +11,8 @@ const wrapped = (component, options, baseOptions) => wrapInput(
   { passErrorProp: true, ...options }
 )
 
-const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true } = {}) => (
-  ({ className, error, hiddenLabel, variant, label, helperText, ...inputProps }) => (
+const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true, defaultMargin } = {}) => (
+  ({ className, error, hiddenLabel, variant, margin, label, helperText, ...inputProps }) => (
     createElement(core.FormControl, {
       className,
       error,
@@ -19,6 +20,7 @@ const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true }
       hiddenLabel,
       required: inputProps.required,
       variant,
+      margin: margin || defaultMargin,
       children: [
         ...(label ? [createElement(core.InputLabel, {
           key: 'label',
@@ -40,7 +42,7 @@ const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true }
 )
 
 export const Text = wrapped(core.Input)
-export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShrinkLabel: true })
+export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShrinkLabel: true, defaultMargin: 'normal' })
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
 
 export const Radio = base(
@@ -52,7 +54,7 @@ export const Radio = base(
     ] })
   ),
   {},
-  { alwaysShrinkLabel: true }
+  { alwaysShrinkLabel: true, defaultMargin: 'normal'  }
 )
 
 export const Select = wrapped(({ values, labels, ...props }) =>
@@ -62,5 +64,5 @@ export const Select = wrapped(({ values, labels, ...props }) =>
     )
   }),
   { type: 'select' },
-  { alwaysShrinkLabel: true }
+  { alwaysShrinkLabel: true, defaultMargin: 'normal'  }
 )

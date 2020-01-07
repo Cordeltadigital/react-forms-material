@@ -64,7 +64,7 @@ Name|Type|Description
 ---|---|---
 name|string|Specifies the name of the property to populate with the field value (required)
 label|string|Text on the field's label
-value|any|Initial value for the field
+value|any|Initial value for the field. The DOM API will generally cast this to a string
 helperText|string|Specifies the helper text for the field
 
 The following props are passed to the parent [`FormControl` component](https://material-ui.com/api/form-control/):
@@ -73,7 +73,8 @@ Name|Type|Description
 ---|---|---
 className|string|Class name to apply to the component
 fullWidth|boolean|Specifies that the field should occupy the full width of its parent
-variant|string|Corresponds to the variant [prop](https://material-ui.com/api/form-control/#props) of a `FormControl`. One of `standard`, `outlined` or `filled`
+variant|string|Corresponds to the `variant` [prop](https://material-ui.com/api/form-control/#props) of a `FormControl`. One of `standard`, `outlined` or `filled`
+margin|string|Corresponds to the `margin` [prop](https://material-ui.com/api/form-control/#props) of a `FormControl`. One of `none`, `dense` or `normal`. Most fields, except `Text` default to `normal`
 
 All other props are passed to the input component, as described below.
  
@@ -92,8 +93,8 @@ component. Options are specified using the props below and are rendered as
 
 Name|Type|Description
 ---|---|---
-values|array(any)|Specifies the values to use for each option
-labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used. 
+values|array(any)|Specifies the values to use for each option. The DOM API casts these to strings
+labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used.
 
 ### `Radio`
 
@@ -105,8 +106,8 @@ in the next section.
 
 Name|Type|Description
 ---|---|---
-values|array(any)|Specifies the values to use for each option
-labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used. 
+values|array(any)|Specifies the values to use for each option. The DOM API casts these to strings
+labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used
 
 ### `RadioButton`
 
