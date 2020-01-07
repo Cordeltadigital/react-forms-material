@@ -29,7 +29,7 @@ export default ({ onSubmit, initialValues }) => (
 
 ## Core Components
 
-### Form
+### `Form`
 
 All input components must be contained within a `Form` component.
 
@@ -42,9 +42,9 @@ onSubmit|function(values)|A callback to be executed when the corresponding `Subm
 
 All other props are passed on to the underlying `form` element.
 
-### Submit
+### `Submit`
 
-Renders a Material UI [Button component](https://material-ui.com/api/button/) that triggers the closest `Form` 
+Renders a Material UI [`Button` component](https://material-ui.com/api/button/) that triggers the closest `Form` 
 component's `onSubmit` callback.
 
 #### Props
@@ -53,7 +53,7 @@ All props are passed on to the underlying `Button` component.
 
 ## Field Components
 
-Field components are constructed by wrapping a Material UI [`InputLabel component`](https://material-ui.com/api/input-label/), 
+Field components are constructed by wrapping a Material UI [`InputLabel` component](https://material-ui.com/api/input-label/), 
 a form component and [`FormHelperText` component](https://material-ui.com/api/form-helper-text/) within a 
 [`FormControl` component](https://material-ui.com/api/form-control/), similar to a 
 [`TextField` component](https://material-ui.com/api/text-field/).
@@ -75,15 +75,14 @@ className|string|Class name to apply to the component
 fullWidth|boolean|Specifies that the field should occupy the full width of its parent
 variant|string|Corresponds to the variant [prop](https://material-ui.com/api/form-control/#props) of a `FormControl`. One of `standard`, `outlined` or `filled`
 
-Additionally, any HTML5 validation attributes can be passed to field components. All other props are passed to the
-input component, as described below.
+All other props are passed to the input component, as described below.
  
-### Text
+### `Text`
 
 Renders a field component with a Material UI [`Input` component](https://material-ui.com/api/input/) as the input 
 component.
 
-### Select
+### `Select`
 
 Renders a field component with a Material UI [`Select` component](https://material-ui.com/api/select/) as the input 
 component. Options are specified using the props below and are rendered as 
@@ -96,7 +95,7 @@ Name|Type|Description
 values|array(any)|Specifies the values to use for each option
 labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used. 
 
-### Radio
+### `Radio`
 
 Renders a field component with a Material UI [`RadioGroup` component](https://material-ui.com/api/radio-group/) as the 
 input component. Options are specified using the props below and are rendered as `RadioButton` components, described
@@ -109,12 +108,12 @@ Name|Type|Description
 values|array(any)|Specifies the values to use for each option
 labels|array(string)|Specifies the labels to use for each corresponding option in the `values` array. If not specified, entries from the `values` array are used. 
 
-### RadioButton
+### `RadioButton`
 
 Renders a field component with a Material UI [`Radio` component](https://material-ui.com/api/radio/) as the input 
 component. 
 
-### Checkbox
+### `Checkbox`
 
 Renders a field component with a Material UI [`Checkbox` component](https://material-ui.com/api/checkbox/) as the 
 input component. 
