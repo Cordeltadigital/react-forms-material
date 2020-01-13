@@ -2,7 +2,7 @@
 
 Beautiful, ultra simple, stateless, validated forms for use in React function components.
 
-A demo is available [https://cordelta.github.io/react-forms-material/](here).
+A demo is available at [https://cordeltadigital.github.io/react-forms-material/](https://cordeltadigital.github.io/react-forms-material/).
 
 ## Installation
 
