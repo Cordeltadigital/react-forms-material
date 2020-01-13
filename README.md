@@ -1,6 +1,8 @@
 # @cordelta/react-forms-material
 
-Beautiful, ultra simple, stateless, validated forms for use in React function components
+Beautiful, ultra simple, stateless, validated forms for use in React function components.
+
+A demo is available [https://cordeltadigital.github.io/react-forms-material/](here).
 
 ## Installation
 
