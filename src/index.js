@@ -5,6 +5,7 @@ import './styles'
 
 export const Form = FormProvider(context.Provider, { margin: 'normal', display: 'block' })
 export const Submit = wrapSubmit(core.Button)
+export const Button = core.Button
 
 const wrapped = (component, options, baseOptions) => wrapInput(
   base(component, options, baseOptions),

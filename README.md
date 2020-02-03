@@ -53,6 +53,10 @@ component's `onSubmit` callback.
 
 All props are passed on to the underlying `Button` component.
 
+### `Button`
+
+A pass through of the Material UI [`Button` component](https://material-ui.com/api/button/) for convenience.
+
 ## Field Components
 
 Field components are constructed by wrapping a Material UI [`InputLabel` component](https://material-ui.com/api/input-label/), 
