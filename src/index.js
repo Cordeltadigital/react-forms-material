@@ -1,9 +1,11 @@
 import { createElement } from 'react'
 import { FormProvider, context, wrapInput, wrapSubmit } from '@cordelta/react-forms'
+import { extractErrorMessage } from '@cordelta/react-forms/src/ErrorMessage'
 import * as core from '@material-ui/core'
 import './styles'
 
-export const Form = FormProvider(context.Provider, { margin: 'normal', display: 'block' })
+export const ErrorMessage = ({ error }) => createElement(core.FormHelperText, { children: extractErrorMessage(error), error: true })
+export const Form = FormProvider(context.Provider, { margin: 'normal', display: 'block' }, ErrorMessage)
 export const Submit = wrapSubmit(core.Button)
 export const Button = core.Button
 
