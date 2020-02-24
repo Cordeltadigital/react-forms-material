@@ -49,7 +49,7 @@ export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShr
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
 
 export const Radio = createRawConsumer(base(
-  ({ name, values, labels, numeric, ...props }) => (
+  ({ name, values, labels, numeric, required, ...props }) => (
     createElement(core.RadioGroup, { ...props, children: [
       values.map((value, index) =>
         createElement(RadioButton, {
@@ -58,7 +58,8 @@ export const Radio = createRawConsumer(base(
           numeric,
           key: value,
           label: (labels && labels[index]) || value,
-          margin: props.margin
+          margin: props.margin,
+          ...(required && { required })
         })
       )
     ] })
@@ -70,7 +71,12 @@ export const Radio = createRawConsumer(base(
 export const Select = wrapped(({ values, labels, ...props }) =>
   createElement(core.Select, { ...props, children:
     values.map((value, index) =>
-      createElement(core.MenuItem, { value, key: value, children: (labels && labels[index]) || value })
+      createElement(core.MenuItem, {
+        value,
+        key: value,
+        children: (labels && labels[index]) || value,
+        ...(props.required && { required: props.required })
+      })
     )
   }),
   { type: 'select' },
