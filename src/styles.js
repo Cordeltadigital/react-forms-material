@@ -1,16 +1,25 @@
 import injectCss from '@cordelta/react-forms/src/injectCss'
 
 injectCss('react-forms-material-styles', `
-  form.react-forms .MuiRadio-root, form.react-forms .MuiCheckbox-root {
-    top: 10px;
+  .react-forms-material-radiogroup.MuiFormControl-root {
+    overflow: hidden;
   }
 
-  form.react-forms .react-forms-material-field {
-    display: block;
+  .react-forms-material-radio.MuiFormControl-root {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
   }
-    
-  form.react-forms .react-forms-material-inline {
-    display: inline-block;
+  
+  .react-forms-material-radio .MuiInputLabel-formControl {
+    position: static;
+  }
+
+  .react-forms-material-radio .MuiRadio-root {
+    transform: translate(0, 9px) scale(1);
+  }  
+  
+  .react-forms-material-checkbox .MuiCheckbox-root {
+    transform: translate(0, 9px) scale(1);
   }
 `)
 

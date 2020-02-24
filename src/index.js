@@ -1,11 +1,11 @@
 import { createElement } from 'react'
-import { FormProvider, context, wrapInput, wrapSubmit } from '@cordelta/react-forms'
+import { FormProvider, context, createRawConsumer, wrapInput, wrapSubmit } from '@cordelta/react-forms'
 import { extractErrorMessage } from '@cordelta/react-forms/src/ErrorMessage'
 import * as core from '@material-ui/core'
 import './styles'
 
 export const ErrorMessage = ({ error }) => createElement(core.FormHelperText, { children: extractErrorMessage(error), error: true })
-export const Form = FormProvider(context.Provider, { margin: 'normal', display: 'block' }, ErrorMessage)
+export const Form = FormProvider(context.Provider, { margin: 'normal' }, ErrorMessage)
 export const Submit = wrapSubmit(core.Button)
 export const Button = core.Button
 
@@ -15,9 +15,9 @@ const wrapped = (component, options, baseOptions) => wrapInput(
 )
 
 const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true } = {}) => (
-  ({ className, error, hiddenLabel, variant, margin, display, label, helperText, ...inputProps }) => (
+  ({ className, error, hiddenLabel, variant, margin, label, helperText, ...inputProps }) => (
     createElement(core.FormControl, {
-      className: `react-forms-material-field${className ? ` ${className}` : ''}${display === 'inline' ? ' react-forms-material-inline' : ''}`,
+      className: `react-forms-material-field${options.type ? ` react-forms-material-${options.type}` : ''}${className ? ` ${className}` : ''}`,
       error,
       fullWidth: inputProps.fullWidth,
       hiddenLabel,
@@ -48,7 +48,7 @@ export const Text = wrapped(core.Input)
 export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShrinkLabel: true })
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
 
-export const Radio = base(
+export const Radio = createRawConsumer(base(
   ({ name, values, labels, numeric, ...props }) => (
     createElement(core.RadioGroup, { ...props, children: [
       values.map((value, index) =>
@@ -58,14 +58,14 @@ export const Radio = base(
           numeric,
           key: value,
           label: (labels && labels[index]) || value,
-          margin: props.row ? 'none' : props.margin
+          margin: props.margin
         })
       )
     ] })
   ),
-  {},
+  { type: 'radiogroup' },
   { alwaysShrinkLabel: true  }
-)
+))
 
 export const Select = wrapped(({ values, labels, ...props }) =>
   createElement(core.Select, { ...props, children:
