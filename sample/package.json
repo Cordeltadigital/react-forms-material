@@ -4,7 +4,7 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@cordelta/react-forms-material": "^0.0.3",
+    "@cordelta/react-forms-material": "^0.0.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0"
