@@ -1,4 +1,4 @@
-import injectCss from '@cordelta/react-forms/src/injectCss'
+import injectCss from '@cordelta/react-forms/dist/injectCss'
 
 injectCss('react-forms-material-styles', `
   .react-forms-material-radiogroup.MuiFormControl-root {

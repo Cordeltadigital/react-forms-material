@@ -1,6 +1,6 @@
 import { createElement } from 'react'
 import { FormProvider, context, createRawConsumer, wrapInput, wrapSubmit } from '@cordelta/react-forms'
-import { extractErrorMessage } from '@cordelta/react-forms/src/ErrorMessage'
+import { extractErrorMessage } from '@cordelta/react-forms/dist/ErrorMessage'
 import * as core from '@material-ui/core'
 import './styles'
 
