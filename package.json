@@ -52,7 +52,7 @@
     "ui"
   ],
   "author": "danderson00",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "publishConfig": {
     "access": "public"
   },
