@@ -1,5 +1,5 @@
 import { createElement } from 'react'
-import { FormProvider, context, createRawConsumer, wrapInput, wrapSubmit } from '@cordelta/react-forms'
+import { FormProvider, context, createRawConsumer, wrapInput, wrapSubmit, useFormValues } from '@cordelta/react-forms'
 import { extractErrorMessage } from '@cordelta/react-forms/dist/ErrorMessage'
 import * as core from '@material-ui/core'
 import './styles'
@@ -8,6 +8,7 @@ export const ErrorMessage = ({ error }) => createElement(core.FormHelperText, { 
 export const Form = FormProvider(context.Provider, { margin: 'normal' }, ErrorMessage)
 export const Submit = wrapSubmit(core.Button)
 export const Button = core.Button
+export { useFormValues }
 
 const wrapped = (component, options, baseOptions) => wrapInput(
   base(component, options, baseOptions),
