@@ -1,6 +1,6 @@
 {
   "name": "@cordelta/react-forms-material",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Beautiful, ultra simple, stateless, validated forms for use in React function components",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -10,7 +10,7 @@
     "prepare": "babel src --source-maps false --out-dir dist"
   },
   "dependencies": {
-    "@cordelta/react-forms": "^0.0.10",
+    "@cordelta/react-forms": "^0.0.11",
     "@material-ui/core": "^4.9.10"
   },
   "peerDependencies": {
