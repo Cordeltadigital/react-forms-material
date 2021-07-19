@@ -50,7 +50,7 @@ export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShr
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
 
 export const Radio = createRawConsumer(base(
-  ({ name, values, labels, numeric, required, ...props }) => (
+  ({ name, values, labels, numeric, required, getFieldValue, getFieldValues, ...props }) => (
     createElement(core.RadioGroup, { ...props, children: [
       values.map((value, index) =>
         createElement(RadioButton, {
