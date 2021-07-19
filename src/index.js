@@ -15,8 +15,8 @@ const wrapped = (component, options, baseOptions) => wrapInput(
   { passErrorProp: true, ...options }
 )
 
-const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true } = {}) => (
-  ({ className, error, hiddenLabel, variant, margin, label, helperText, ...inputProps }) => (
+const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel: shrinkLabelOption = true } = {}) => (
+  ({ className, error, hiddenLabel, variant, margin, label, helperText, shrinkLabel, ...inputProps }) => (
     createElement(core.FormControl, {
       className: `react-forms-material-field${options.type ? ` react-forms-material-${options.type}` : ''}${className ? ` ${className}` : ''}`,
       error,
@@ -30,8 +30,8 @@ const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel = true }
           key: 'label',
           htmlFor: inputProps.id,
           children: label,
-          ...(shrinkLabel === false && { shrink: false }),
-          ...(alwaysShrinkLabel && { className: 'MuiInputLabel-shrink' }),
+          ...(shrinkLabelOption === false && { shrink: false }),
+          ...((alwaysShrinkLabel || shrinkLabel) && { className: 'MuiInputLabel-shrink' }),
         })] : []),
 
         createElement(component, { key: 'input', ...inputProps }),
