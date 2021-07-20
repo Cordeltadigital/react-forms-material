@@ -5,7 +5,7 @@ import * as core from '@material-ui/core'
 import './styles'
 
 export const ErrorMessage = ({ error }) => createElement(core.FormHelperText, { children: extractErrorMessage(error), error: true })
-export const Form = FormProvider(context.Provider, { margin: 'normal' }, ErrorMessage)
+export const Form = FormProvider(context.Provider, { margin: 'dense' }, ErrorMessage)
 export const Submit = wrapSubmit(core.Button)
 export const Button = core.Button
 export { useFormValues }
@@ -45,6 +45,7 @@ const base = (component, options = {}, { alwaysShrinkLabel, shrinkLabel: shrinkL
   )
 )
 
+export const Input = wrapInput(core.Input)
 export const Text = wrapped(core.Input)
 export const Checkbox = wrapped(core.Checkbox, { type: 'checkbox' }, { alwaysShrinkLabel: true })
 export const RadioButton = wrapped(core.Radio, { type: 'radio' }, { shrinkLabel: false })
